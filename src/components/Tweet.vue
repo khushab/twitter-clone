@@ -12,7 +12,7 @@
         <p class="font-semibold">{{ tweet.name }}</p>
         <p class="text-sm text-darl ml-2">{{ tweet.handle }}</p>
       </div>
-      <p>
+      <p class="py-2">
         {{ tweet.tweet }}
       </p>
       <div

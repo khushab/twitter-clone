@@ -50,6 +50,20 @@
       </button>
     </div>
     <div class="mt-6 w-full text-center">
+      <button
+        class="w-full flex justify-between hover:bg-lighter p-2 rounded-full"
+      >
+        <div class="w-full flex justify-between align-middle px-4">
+          <img
+            class="rounded-full w-12 h-12"
+            src="https://avatars.githubusercontent.com/u/70889514?v=4"
+          />
+          <div>
+            <p class="font-bold text-left leading-tight">Khushab</p>
+            <p class="text-left leading-tight text-dark">@Khushab</p>
+          </div>
+        </div>
+      </button>
       <button class="text-red-600 font-semibold hover:text-red-500">
         Logout
       </button>
@@ -69,7 +83,7 @@ export default {
         { icon: "fas fa-envelope", name: "Messages", id: "messages" },
         { icon: "fas fa-bookmark", name: "Bookmarks", id: "bookmarks" },
         { icon: "fas fa-clipboard-list", name: "Lists", id: "lists" },
-        { icon: "fas fa-user", name: "User", id: "user" },
+        { icon: "fas fa-user", name: "Profile", id: "Profile" },
         { icon: "fas fa-ellipsis-h", name: "More", id: "more" },
       ],
     };

@@ -1,53 +1,34 @@
 <template>
-  <div>
-    <div id="app" class="flex container h-screen w-full">
-      <div class="w-1/5 border-r border-lighter px-8 py-2">
-        <SidebarLeft />
-      </div>
-      <div class="w-1/2 h-full overflow-y-scroll">
-        <MainSection />
-      </div>
-      <div
-        class="
-          w-1/3
-          h-full
-          border-l border-lighter
-          px-8
-          py-2
-          relative
-          overflow-y-scroll
-          md:block
-          hidden
-        "
-      >
-        <SidebarRight />
-      </div>
-    </div>
-    <Login />
-    <Signup />
+  <div id="app">
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div> -->
+    <router-view />
   </div>
 </template>
 
-<script>
-import SidebarLeft from "./components/SidebarLeft.vue";
-import SidebarRight from "./components/SidebarRight.vue";
-import MainSection from "./components/MainSection.vue";
-import Login from "./components/Login.vue";
-import Signup from "./components/Signup.vue";
-
-export default {
-  name: "App",
-  components: {
-    SidebarLeft,
-    MainSection,
-    SidebarRight,
-    Login,
-    Signup,
-  },
-};
-</script>
-
 <style>
+/* #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+} */
 * {
   margin: 0;
   padding: 0;
