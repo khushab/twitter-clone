@@ -34,10 +34,14 @@
       >
         Login
       </button>
-      <button class="bg-gray-300 w-full h-14 rounded-2xl text-xl font-bold">
-        Sign up
-      </button>
     </form>
+    <div class="w-1/3 px-4">
+      <router-link to="/signup">
+        <button class="bg-gray-300 w-full h-14 rounded-2xl text-xl font-bold">
+          Signup
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 

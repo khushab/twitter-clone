@@ -6,13 +6,14 @@
     <div class="px-5 py-3 border-b border-lighter flex">
       <div>
         <img
-          src="https://pbs.twimg.com/profile_images/1283187184028151809/L3SiFEL3_normal.jpg"
+          src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
           alt="profile"
-          class="w-12 h-12 rounded-full border border-lighter"
+          class="w-12 h-12 rounded-full border border-lighter object-cover"
         />
       </div>
-      <form class="w-full px-4 relative">
+      <form v-on:submit.prevent="addNewTweet" class="w-full px-4 relative">
         <textarea
+          v-model="myTweet"
           placeholder="What's happening?"
           class="w-full focus:outline-none mt-3"
         ></textarea>
@@ -70,21 +71,40 @@ export default {
           id: 1,
         },
         {
-          src: "https://pbs.twimg.com/profile_images/1423663740344406029/l_-QOIHY_400x400.jpg",
-          name: "Elon Musk",
-          handle: "@elonmusk",
-          tweet: "Haha just made a flame thrower. Shld I sell them?",
+          src: "https://pbs.twimg.com/profile_images/856983737426423809/6jebtwP-_400x400.jpg",
+          name: "Brad Traversy",
+          handle: "@traversymedia",
+          tweet: "There is no such thing as a “best programming language”",
           id: 2,
         },
         {
-          src: "https://pbs.twimg.com/profile_images/1423663740344406029/l_-QOIHY_400x400.jpg",
-          name: "Elon Musk",
-          handle: "@elonmusk",
-          tweet: "Just did something crazyyyyyyy",
+          src: "https://pbs.twimg.com/profile_images/1409137609729789962/fUE4aWNf_400x400.jpg",
+          name: "Florin Pop ",
+          handle: "@florinpop1705",
+          tweet:
+            "You can drastically change your life by changing your mindset.",
           id: 3,
         },
       ],
+      myTweet: "",
     };
+  },
+  methods: {
+    addNewTweet() {
+      console.log(this.myTweet);
+      if (this.myTweet == "") {
+        return;
+      }
+      let newTweet = {
+        src: "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+        name: "Khushab",
+        handle: "@khushab",
+        tweet: this.myTweet,
+        id: Math.random() * 1000,
+      };
+      this.tweets.push(newTweet);
+      this.myTweet = "";
+    },
   },
 };
 </script>

@@ -12,7 +12,9 @@
           text-blue
         "
       >
-        <i class="fab fa-twitter"></i>
+        <router-link to="/">
+          <i class="fab fa-twitter"></i>
+        </router-link>
       </button>
       <div>
         <button
@@ -30,8 +32,26 @@
             mb-1
           "
         >
-          <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
-          <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+          <router-link
+            v-if="button.name == 'Profile'"
+            to="/profile"
+            class="flex items-center"
+          >
+            <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
+            <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+          </router-link>
+          <router-link
+            v-else-if="button.name == 'Home'"
+            to="/"
+            class="flex items-center"
+          >
+            <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
+            <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+          </router-link>
+          <div v-else class="flex items-center">
+            <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
+            <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+          </div>
         </button>
       </div>
       <button
@@ -56,7 +76,7 @@
         <div class="w-full flex justify-between align-middle px-4">
           <img
             class="rounded-full w-12 h-12"
-            src="https://avatars.githubusercontent.com/u/70889514?v=4"
+            src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
           />
           <div>
             <p class="font-bold text-left leading-tight">Khushab</p>
