@@ -1,0 +1,49 @@
+<template>
+  <div class="flex">
+    <div class="flex-none mr-4">
+      <img
+        :src="tweet.src"
+        alt="pic"
+        class="h-12 w-12 rounded-full flex-none"
+      />
+    </div>
+    <div class="w-full">
+      <div class="flex items-center w-full">
+        <p class="font-semibold">{{ tweet.name }}</p>
+        <p class="text-sm text-darl ml-2">{{ tweet.handle }}</p>
+      </div>
+      <p>
+        {{ tweet.tweet }}
+      </p>
+      <div
+        class="flex items-center justify-between w-full px-2 my-2 text-black"
+      >
+        <div class="flex items-center cursor-pointer">
+          <i class="mr-2 fas fa-comment"></i>
+        </div>
+        <div class="flex items-center cursor-pointer">
+          <i class="mr-2 fas fa-retweet"></i>
+        </div>
+        <div class="flex items-center cursor-pointer">
+          <i class="mr-2 fas fa-heart"></i>
+        </div>
+        <div class="flex items-center cursor-pointer">
+          <i class="mr-2 fas fa-upload"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Tweet",
+  props: ["tweet"],
+  mounted() {
+    console.log(this.tweet);
+  },
+};
+</script>
+
+<style>
+</style>
