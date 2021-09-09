@@ -6,6 +6,7 @@
         rounded-full
         w-full
         p-2
+        mt-2
         bg-lighter
         pl-10
         text-sm
@@ -14,12 +15,12 @@
       placeholder="Search..."
     />
     <i
-      class="fas fa-search absolute left-0 top-0 mt-4 ml-12 text-sm text-light"
+      class="fas fa-search absolute left-0 top-0 mt-6 ml-12 text-sm text-light"
     ></i>
 
     <!-- Who to follow -->
     <div class="w-full rounded-lg bg-lightest mt-2">
-      <div class="flex items-center p-2">
+      <div class="flex items-center p-3">
         <p class="text-lg font-bold">Who to follow</p>
       </div>
       <button
@@ -50,6 +51,7 @@
               h-8
               hover:bg-dark
               rounded-full
+              font-bold
             "
           >
             Follow
@@ -72,7 +74,7 @@
 
     <!-- Whats happening -->
     <div class="w-full rounded-lg bg-lightest mt-2">
-      <div class="flex items-center p-2">
+      <div class="flex items-center p-3">
         <p class="text-lg font-bold">What's happening</p>
       </div>
       <button
@@ -119,6 +121,11 @@ export default {
           top: "Cricket",
           title: "Jay Shah",
           bottom: "Trending with #BCCI",
+        },
+        {
+          top: "Buisiness & Finance",
+          title: "Stock market",
+          bottom: "2,999 Tweets",
         },
       ],
       whoToFollow: [
