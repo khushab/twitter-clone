@@ -1,28 +1,57 @@
 <template>
   <div>
-    <button
-      class="h-12 w-12 ml-2 hover:bg-lightblue text-3xl rounded-full text-blue"
-    >
-      <i class="fab fa-twitter"></i>
-    </button>
     <div>
       <button
-        v-for="button in buttons"
-        v-bind:key="button.id"
         class="
-          flex
-          items-center
-          py-2
-          px-4
+          h-12
+          w-12
+          ml-2
           hover:bg-lightblue
-          hover:text-blue
+          text-3xl
           rounded-full
-          mr-auto
-          mb-3
+          text-blue
         "
       >
-        <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
-        <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+        <i class="fab fa-twitter"></i>
+      </button>
+      <div>
+        <button
+          v-for="button in buttons"
+          v-bind:key="button.id"
+          class="
+            flex
+            items-center
+            py-2
+            px-4
+            hover:bg-lightblue
+            hover:text-blue
+            rounded-full
+            mr-auto
+            mb-1
+          "
+        >
+          <i :class="`${button.icon} text-2xl mr-4 text-left`"></i>
+          <p class="text-xl font-semibold text-left">{{ button.name }}</p>
+        </button>
+      </div>
+      <button
+        class="
+          text-white
+          bg-blue
+          rounded-full
+          font-semibold
+          focus:outline-none
+          w-full
+          p-3
+          hover:bg-darkblue
+        "
+      >
+        Tweet
+      </button>
+    </div>
+    <div class="mt-6 w-full text-center">
+      <button class="text-red-600 font-semibold hover:text-red-500">
+        Logout
       </button>
     </div>
   </div>
