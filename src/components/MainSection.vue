@@ -6,7 +6,7 @@
     <div class="px-5 py-3 border-b border-lighter flex">
       <div>
         <img
-          src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
+          :src="profileData.image"
           alt="profile"
           class="w-12 h-12 rounded-full border border-lighter object-cover"
         />
@@ -14,6 +14,7 @@
       <form v-on:submit.prevent="addNewTweet" class="w-full px-4 relative">
         <textarea
           v-model="myTweet"
+          required
           placeholder="What's happening?"
           class="w-full focus:outline-none mt-3"
         ></textarea>
@@ -54,9 +55,11 @@
 </template>
 
 <script>
+import axios from "axios";
 import Tweet from "./Tweet.vue";
 export default {
   name: "MainSection",
+  props: ["profileData"],
   components: {
     Tweet,
   },
@@ -90,21 +93,28 @@ export default {
     };
   },
   methods: {
-    addNewTweet() {
+    async addNewTweet() {
       console.log(this.myTweet);
       if (this.myTweet == "") {
         return;
       }
-      let newTweet = {
-        src: "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
-        name: "Khushab",
-        handle: "@khushab",
+
+      // sending the tweet to database
+      const myTweets = await axios.post("/userData/tweet", {
         tweet: this.myTweet,
-        id: Math.random() * 1000,
-      };
-      this.tweets.push(newTweet);
-      this.myTweet = "";
+      });
+      console.log(myTweets.data, "My tweets");
+      this.getTweets();
     },
+    async getTweets() {
+      const allTweets = await axios.get("/userData/tweets");
+      console.log(allTweets, "My tweets");
+      this.tweets = allTweets.data;
+    },
+  },
+  created() {
+    this.getTweets();
+    console.log(this.profileData);
   },
 };
 </script>

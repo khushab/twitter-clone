@@ -5,7 +5,7 @@
         <SidebarLeft />
       </div>
       <div class="w-1/2 h-full overflow-y-scroll">
-        <MainSection />
+        <MainSection :profileData="profileData" />
       </div>
       <div
         class="
@@ -32,6 +32,7 @@ import SidebarRight from "../components/SidebarRight.vue";
 import MainSection from "../components/MainSection.vue";
 export default {
   name: "Home",
+  props: ["profileData"],
   components: {
     SidebarLeft,
     MainSection,

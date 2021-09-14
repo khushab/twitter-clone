@@ -5,7 +5,7 @@
         <i class="fas fa-arrow-left mr-4 hover:bg-lighter p-3 rounded-full"></i>
       </router-link>
       <div>
-        <h1 class="font-bold text-lg">Mohammed Khushab Alam</h1>
+        <h1 class="font-bold text-lg">{{ profileData.name }}</h1>
         <p class="font-light text-sm">22 Tweets</p>
       </div>
     </div>
@@ -17,7 +17,7 @@
     <div>
       <div class="flex w-full justify-between">
         <img
-          src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
+          :src="profileData.image"
           alt="pic"
           class="w-32 h-32 rounded-full border-4 -mt-16 border-white ml-2"
         />
@@ -37,8 +37,8 @@
         </button>
       </div>
       <div class="px-2">
-        <h1 class="font-bold text-xl text-black">Mohammed Khushab Alam</h1>
-        <h1 class="text-sm text-dark">@khushab</h1>
+        <h1 class="font-bold text-xl text-black">{{ profileData.name }}</h1>
+        <h1 class="text-sm text-dark">@{{ profileData.handle }}</h1>
         <div class="flex">
           <p class="font-semibold pr-1">124</p>
           <span class="text-dark mr-4"> Following</span>
@@ -68,7 +68,7 @@
 
     <!-- Tweets -->
     <div
-      v-for="tweet in tweets"
+      v-for="tweet in myTweets"
       :key="tweet.id"
       class="w-full p-4 border-b hover:bg-lighter"
     >
@@ -78,9 +78,11 @@
 </template>
 
 <script>
+import axios from "axios";
 import Tweet from "./Tweet.vue";
 export default {
   name: "ProfileSection",
+  props: ["profileData"],
   components: {
     Tweet,
   },
@@ -109,7 +111,14 @@ export default {
           id: 3,
         },
       ],
+      myTweets: [],
     };
+  },
+  async created() {
+    const tweets = await axios.get("/userData/mytweets");
+    console.log(tweets, "My tweets");
+    this.myTweets = tweets.data;
+    console.log(this.profileData);
   },
 };
 </script>

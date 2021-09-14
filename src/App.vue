@@ -4,9 +4,27 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <router-view />
+    <router-view :profileData="profileData" />
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  name: "App",
+  data() {
+    return {
+      profileData: {},
+    };
+  },
+  async created() {
+    const profile = await axios.get("/userData/me");
+    console.log(profile.data, "Profile data");
+    this.profileData = profile.data;
+    console.log(this.profileData, "YEHIIIIIIIIII");
+  },
+};
+</script>
 
 <style>
 /* #app {
