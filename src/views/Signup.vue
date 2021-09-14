@@ -5,7 +5,7 @@
     >
       <i class="fab fa-twitter"></i>
     </button>
-    <form class="w-1/3 px-4">
+    <form @submit.prevent="submitHandler" class="w-1/3 px-4">
       <h1 class="text-3xl font-bold my-4">Create your account</h1>
       <div class="flex flex-col">
         <!-- name -->
@@ -14,6 +14,7 @@
           type="text"
           required
           placeholder="Full name"
+          v-model="name"
         />
         <!-- email -->
         <input
@@ -21,6 +22,7 @@
           type="email"
           required
           placeholder="Email"
+          v-model="email"
         />
         <!-- username -->
         <input
@@ -28,12 +30,15 @@
           type="text"
           required
           placeholder="Username"
+          v-model="handle"
         />
         <!-- image url -->
         <input
           class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
           type="text"
           placeholder="Image url"
+          required
+          v-model="image"
         />
         <!-- Password -->
         <input
@@ -41,6 +46,7 @@
           type="password"
           required
           placeholder="Password"
+          v-model="password"
         />
       </div>
       <button
@@ -53,6 +59,7 @@
           text-xl text-white
           font-bold
         "
+        type="submit"
       >
         Sign up
       </button>
@@ -68,8 +75,40 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Login",
+  data() {
+    return {
+      name: "",
+      email: "",
+      handle: "",
+      image: "",
+      password: "",
+    };
+  },
+  methods: {
+    async submitHandler() {
+      const data = {
+        name: this.name,
+        email: this.email,
+        handle: this.handle,
+        image: this.image,
+        password: this.password,
+      };
+      console.log(data);
+
+      try {
+        const result = await axios.post(
+          "http://localhost:3200/auth/register",
+          data
+        );
+        console.log(result, " SUCCESS!!!!!!!");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
 };
 </script>
 

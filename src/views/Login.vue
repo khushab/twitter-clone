@@ -5,7 +5,7 @@
     >
       <i class="fab fa-twitter"></i>
     </button>
-    <form class="w-1/3 px-4">
+    <form @submit.prevent="submitHandler" class="w-1/3 px-4">
       <h1 class="text-3xl font-bold my-4">Log in to Twitter</h1>
       <div class="flex flex-col">
         <!-- Email -->
@@ -14,6 +14,7 @@
           type="email"
           required
           placeholder="Email"
+          v-model="email"
         />
         <!-- Password -->
         <input
@@ -21,6 +22,7 @@
           type="password"
           required
           placeholder="Password"
+          v-model="password"
         />
       </div>
       <button
@@ -33,6 +35,7 @@
           text-xl text-white
           font-bold
         "
+        type="submit"
       >
         Login
       </button>
@@ -48,8 +51,33 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Login",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async submitHandler() {
+      const data = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log(data);
+      try {
+        const result = await axios.post("/auth/login", data);
+        console.log(result, " SUCCESS!!!!!!!");
+        localStorage.setItem("token", result.data.token);
+        location.reload();
+      } catch (err) {
+        console.log(err);
+        window.alert("Please enter valid credentials");
+      }
+    },
+  },
 };
 </script>
 

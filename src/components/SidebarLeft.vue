@@ -84,7 +84,10 @@
           </div>
         </div>
       </button>
-      <button class="text-red-600 font-semibold hover:text-red-500">
+      <button
+        @click="logout"
+        class="text-red-600 font-semibold hover:text-red-500"
+      >
         Logout
       </button>
     </div>
@@ -107,6 +110,12 @@ export default {
         { icon: "fas fa-ellipsis-h", name: "More", id: "more" },
       ],
     };
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      location.reload();
+    },
   },
 };
 </script>
