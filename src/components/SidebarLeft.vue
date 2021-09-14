@@ -74,13 +74,10 @@
         class="w-full flex justify-between hover:bg-lighter p-2 rounded-full"
       >
         <div class="w-full flex justify-between align-middle px-4">
-          <img
-            class="rounded-full w-12 h-12"
-            src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
-          />
+          <img class="rounded-full w-12 h-12 mr-2" v-bind:src="image" />
           <div>
-            <p class="font-bold text-left leading-tight">Khushab</p>
-            <p class="text-left leading-tight text-dark">@Khushab</p>
+            <p class="font-bold text-left leading-tight">{{ name }}</p>
+            <p class="text-left leading-tight text-dark">@{{ handle }}</p>
           </div>
         </div>
       </button>
@@ -95,6 +92,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "SidebarLeft",
   data() {
@@ -109,6 +107,9 @@ export default {
         { icon: "fas fa-user", name: "Profile", id: "Profile" },
         { icon: "fas fa-ellipsis-h", name: "More", id: "more" },
       ],
+      name: "",
+      handle: "",
+      image: "",
     };
   },
   methods: {
@@ -116,6 +117,13 @@ export default {
       localStorage.removeItem("token");
       location.reload();
     },
+  },
+  async created() {
+    const profileData = await axios.get("/userData/me");
+    console.log(profileData.data, "Profile data");
+    this.name = profileData.data.name;
+    this.handle = profileData.data.handle;
+    this.image = profileData.data.image;
   },
 };
 </script>
