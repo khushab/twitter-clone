@@ -1,21 +1,43 @@
 <template>
   <div class="h-screen w-full flex flex-col items-center">
+    <button
+      class="h-16 w-16 hover:bg-lightblue text-3xl rounded-full text-blue"
+    >
+      <i class="fab fa-twitter"></i>
+    </button>
     <form class="w-1/3 px-4">
-      <button
-        class="h-16 w-16 hover:bg-lightblue text-3xl rounded-full text-blue"
-      >
-        <i class="fab fa-twitter"></i>
-      </button>
       <h1 class="text-3xl font-bold my-4">Create your account</h1>
       <div class="flex flex-col">
+        <!-- name -->
         <input
-          class="border border-gray-400 my-4 p-3 text-grey-darkest rounded"
+          class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
           type="text"
           required
-          placeholder="Name"
+          placeholder="Full name"
         />
+        <!-- email -->
         <input
-          class="border border-gray-400 my-4 p-3 text-grey-darkest rounded"
+          class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
+          type="email"
+          required
+          placeholder="Email"
+        />
+        <!-- username -->
+        <input
+          class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
+          type="text"
+          required
+          placeholder="Username"
+        />
+        <!-- image url -->
+        <input
+          class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
+          type="text"
+          placeholder="Image url"
+        />
+        <!-- Password -->
+        <input
+          class="border border-gray-400 my-2 p-3 text-grey-darkest rounded"
           type="password"
           required
           placeholder="Password"
