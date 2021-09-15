@@ -6,7 +6,6 @@
       </router-link>
       <div>
         <h1 class="font-bold text-lg">{{ profileData.name }}</h1>
-        <p class="font-light text-sm">22 Tweets</p>
       </div>
     </div>
 

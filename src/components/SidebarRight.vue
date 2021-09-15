@@ -36,11 +36,11 @@
         "
       >
         <div class="w-full flex justify-between align-middle px-4">
-          <img class="rounded-full w-12 h-12" v-bind:src="people.imageURL" />
+          <img class="rounded-full w-12 h-12" v-bind:src="people.image" />
           <div>
             <p class="font-bold text-left leading-tight">{{ people.name }}</p>
             <p class="text-left leading-tight text-dark">
-              {{ people.username }}
+              {{ people.handle }}
             </p>
           </div>
           <button
@@ -53,6 +53,7 @@
               rounded-full
               font-bold
             "
+            @click="() => followRequest(people.id)"
           >
             Follow
           </button>
@@ -102,6 +103,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "SidebarRight",
   data() {
@@ -149,6 +151,22 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    async getWhoToFollowData() {
+      const peopleToFollow = await axios.get("/userData/whoToFollow");
+      this.whoToFollow = peopleToFollow.data;
+      console.log(peopleToFollow, "Who to follow");
+    },
+    async followRequest(id) {
+      const data = { followingId: id };
+      const userFollowed = await axios.post("/userData/follow", data);
+      this.getWhoToFollowData();
+      console.log(userFollowed);
+    },
+  },
+  async created() {
+    this.getWhoToFollowData();
   },
 };
 </script>
