@@ -107,7 +107,7 @@ export default {
       this.getTweets();
     },
     async getTweets() {
-      const allTweets = await axios.get("/userData/tweets");
+      const allTweets = await axios.get("/userData/homepageTweets");
       console.log(allTweets, "My tweets");
       this.tweets = allTweets.data;
     },
