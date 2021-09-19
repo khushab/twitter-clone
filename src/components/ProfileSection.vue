@@ -42,7 +42,9 @@
           <p class="font-semibold pr-1">124</p>
           <span class="text-dark mr-4"> Following</span>
           <p class="font-semibold pr-1">12</p>
-          <span class="text-dark"> Followers</span>
+          <span class="text-dark">
+            <router-link to="/followings"> Followers </router-link>
+          </span>
         </div>
       </div>
     </div>

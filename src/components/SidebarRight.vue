@@ -36,12 +36,17 @@
         "
       >
         <div class="w-full flex justify-between align-middle px-4">
-          <img class="rounded-full w-12 h-12" v-bind:src="people.image" />
-          <div>
-            <p class="font-bold text-left leading-tight">{{ people.name }}</p>
-            <p class="text-left leading-tight text-dark">
-              {{ people.handle }}
-            </p>
+          <div class="w-full flex align-middle">
+            <img
+              class="rounded-full w-12 h-12 mr-2"
+              v-bind:src="people.image"
+            />
+            <div>
+              <p class="font-bold text-left leading-tight">{{ people.name }}</p>
+              <p class="text-left leading-tight text-dark">
+                @{{ people.handle }}
+              </p>
+            </div>
           </div>
           <button
             class="

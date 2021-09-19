@@ -104,6 +104,7 @@ export default {
           data
         );
         console.log(result, " SUCCESS!!!!!!!");
+        this.$router.push("/login");
       } catch (err) {
         console.log(err);
       }
