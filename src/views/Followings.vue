@@ -1,7 +1,12 @@
 <template>
   <div class="h-screen w-full">
     <div class="w-2/3 bg-gray-200 h-screen mx-auto">
-      <h1 class="font-bold text-xl px-4">Followings</h1>
+      <div class="flex border-b border-gray-300 align-middle py-2 px-2">
+        <h1 class="font-bold text-xl mr-2">Followings</h1>
+        <router-link to="/">
+          <h1 class="font-semibold text-xl pr-4">Home</h1>
+        </router-link>
+      </div>
       <div
         v-for="following in followings"
         :key="following.id"

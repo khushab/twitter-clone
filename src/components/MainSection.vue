@@ -103,8 +103,8 @@ export default {
       const myTweets = await axios.post("/userData/tweet", {
         tweet: this.myTweet,
       });
+      this.myTweet = "";
       console.log(myTweets.data, "My tweets");
-      this.getTweets();
     },
     async getTweets() {
       const allTweets = await axios.get("/userData/homepageTweets");
