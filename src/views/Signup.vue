@@ -99,8 +99,7 @@ export default {
       console.log(data);
 
       try {
-        const result = await axios.post(
-          "http://localhost:3200/auth/register",
+        const result = await axios.post("/auth/register",
           data
         );
         console.log(result, " SUCCESS!!!!!!!");
