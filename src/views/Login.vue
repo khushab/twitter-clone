@@ -7,6 +7,11 @@
     </button>
     <form @submit.prevent="submitHandler" class="w-1/3 px-4">
       <h1 class="text-3xl font-bold my-4">Log in to Twitter</h1>
+      <p class="text-sm bg-lighter">Don't have an account?</p>
+      <p class="text-sm bg-lighter">
+        Use this: <span class="font-semibold">email:</span> demo@demo.com,
+        <span class="font-semibold">password:</span> lmnopqrst
+      </p>
       <div class="flex flex-col">
         <!-- Email -->
         <input
